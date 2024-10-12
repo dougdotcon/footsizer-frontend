@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FootSizer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (versão segura sem problema de integridade) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Link para o CSS Atualizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="app-title">FootSizer</h1>
+        
+        <div class="button-container">
+            <!-- Botão para abrir a câmera -->
+            <button type="button" class="btn btn-card btn-primary" id="cameraButton" aria-label="Abrir câmera">
+                <i class="fas fa-camera"></i> Tirar Foto
+            </button>
+
+            <!-- Botão para fazer upload de uma imagem da galeria -->
+            <button type="button" class="btn btn-card btn-secondary" id="uploadButton" aria-label="Upload de imagem">
+                <i class="fas fa-upload"></i> Upload da Galeria
+            </button>
+
+            <!-- Input para upload de arquivo, escondido e vinculado ao botão "Upload da Galeria" -->
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+
+        <!-- Área onde a imagem tirada ou carregada será exibida -->
+        <div class="image-preview" id="imagePreview">
+            <video id="video" style="display:none;" autoplay></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <!-- Imagem placeholder -->
+            <img src="camera.png" alt="Preview da Imagem" id="previewImage" class="icon-size">
+        </div>
+
+        <!-- Botão para capturar a imagem da câmera -->
+        <button type="button" class="btn btn-primary" id="captureButton" style="display:none;" aria-label="Capturar foto">
+            <i class="fas fa-camera-retro"></i> Capturar Foto
+        </button>
+
+        <!-- Botão para medir o pé na imagem -->
+        <button type="button" class="btn btn-success" id="measureButton" style="display:none;" aria-label="Medir pé">
+            <i class="fas fa-ruler-horizontal"></i> Medir
+        </button>
+
+        <!-- Modal para exibir o tamanho do pé -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal" aria-label="Fechar modal">&times;</span>
+                <p id="modalFootSize">Tamanho do pé: <span id="footSize"></span> cm</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Adicionar Event Listeners aos botões
+            document.getElementById('cameraButton').addEventListener('click', openCamera);
+            document.getElementById('uploadButton').addEventListener('click', triggerFileInput);
+            document.getElementById('captureButton').addEventListener('click', capturePhoto);
+            document.getElementById('measureButton').addEventListener('click', measureFoot);
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            window.addEventListener('click', outsideClick);
+            document.getElementById('fileInput').addEventListener('change', previewFile);
+        });
+
+        let capturedImageUrl = '';
+        let modalTimeout; // Variável para armazenar o timeout
+
+        // Função para abrir a câmera do dispositivo
+        function openCamera() {
+            const video = document.getElementById('video');
+            const captureButton = document.getElementById('captureButton');
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.style.display = 'block';
+                    captureButton.style.display = 'inline-block';
+                    document.getElementById('previewImage').style.display = 'none';
+                    video.srcObject = stream;
+                })
+                .catch(error => {
+                    alert('Erro ao acessar a câmera: ' + error);
+                });
+        }
+
+        // Função para capturar a imagem da câmera
+        function capturePhoto() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Desenhar o frame atual do vídeo no canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Converter a imagem do canvas para uma URL
+            capturedImageUrl = canvas.toDataURL('image/png');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = capturedImageUrl;
+            previewImage.style.display = 'block';
+
+            // REMOVER a classe 'icon-size' para permitir que a imagem preencha o contêiner
+            previewImage.classList.remove('icon-size');
+
+            // Parar o vídeo e esconder a câmera
+            video.srcObject.getTracks().forEach(track => track.stop());
+            video.style.display = 'none';
+            document.getElementById('captureButton').style.display = 'none';
+
+            // Exibir o botão "Medir"
+            document.getElementById('measureButton').style.display = 'inline-block';
+        }
+
+        // Função para enviar a imagem para o backend
+        function sendImageToServer(imageData) {
+            console.log('Enviando imagem para o servidor');
+            fetch('http://127.0.0.1:5000/upload_image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ image: imageData }),
+            })
+            .then(response => {
+                console.log('Resposta recebida do servidor');
+                return response.json();
+            })
+            .then(data => {
+                console.log('Dados do servidor:', data);
+                if (data.foot_size_cm) {
+                    document.getElementById('footSize').innerText = data.foot_size_cm;
+                    openModal();  // Abrir o modal com o tamanho do pé
+                } else {
+                    alert('Erro: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar a imagem:', error);
+                alert('Erro ao enviar a imagem. Verifique o console para mais detalhes.');
+            });
+        }
+
+        // Função para acionar o input de arquivo ao clicar no botão de upload
+        function triggerFileInput() {
+            document.getElementById('fileInput').click();
+        }
+
+        // Função para visualizar a imagem carregada
+        function previewFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    capturedImageUrl = e.target.result;
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = capturedImageUrl;
+                    previewImage.style.display = 'block';
+
+                    // REMOVER a classe 'icon-size' para permitir que a imagem preencha o contêiner
+                    previewImage.classList.remove('icon-size');
+
+                    // Exibir o botão "Medir" após o upload
+                    document.getElementById('measureButton').style.display = 'inline-block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Função para medir o pé usando a imagem capturada ou carregada
+        function measureFoot(event) {
+            console.log('Botão "Medir" clicado');
+            if (event) {
+                event.preventDefault();
+            }
+
+            if (capturedImageUrl) {
+                console.log('Enviando imagem para o servidor');
+                sendImageToServer(capturedImageUrl);
+            } else {
+                console.log('Nenhuma imagem disponível para medir');
+                alert('Nenhuma imagem disponível para medir.');
+            }
+        }
+
+        // Função para abrir o modal
+        function openModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'flex';
+            console.log('Modal aberto');
+
+            // Limpar qualquer timeout anterior para evitar múltiplos fechamentos
+            if (modalTimeout) {
+                clearTimeout(modalTimeout);
+            }
+
+            // Fechar automaticamente após 15 segundos (15000 ms)
+            modalTimeout = setTimeout(() => {
+                closeModal();
+            }, 15000); // 15 segundos
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+            console.log('Modal fechado');
+
+            // Limpar o timeout para evitar chamadas desnecessárias
+            if (modalTimeout) {
+                clearTimeout(modalTimeout);
+                modalTimeout = null;
+            }
+        }
+
+        // Função para fechar o modal ao clicar fora dele
+        function outsideClick(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                closeModal();
+                console.log('Modal fechado ao clicar fora');
+            }
+        }
+    </script>
+</body>
+</html>
