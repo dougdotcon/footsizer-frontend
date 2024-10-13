@@ -1,0 +1,21 @@
+body {
+  background-color: #f5f5dc;
+  color: #2e4c2f;
+}
+.btn-musgo {
+  background-color: #2e4c2f;
+  color: white;
+  border: none;
+}
+
+.btn-no-bg {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-no-bg:hover {
+  color: #0056b3;
+}
+

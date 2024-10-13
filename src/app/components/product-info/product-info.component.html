@@ -1,0 +1,38 @@
+<div class="product-info">
+  <h1>Sapato Casual Masculino</h1>
+  <p>Preço: <strong>R$ 199,90</strong></p>
+  <p>Cor: Preto</p>
+  <p>Tamanhos disponíveis: 38, 39, 40, 41, 42</p>
+  <button class="btn btn-musgo">Comprar</button>
+  <button class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#sizeModal">
+    Seu Tamanho Certo
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="sizeModal" tabindex="-1" aria-labelledby="sizeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sizeModalLabel">Encontre o Seu Tamanho Certo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Para garantir que o sapato escolhido tenha o ajuste perfeito, você pode tirar uma foto do seu pé ou fazer upload de uma imagem da sua galeria.</p>
+
+          <div class="mt-3">
+            <h6>Escolha uma opção:</h6>
+            <button class="btn btn-outline-primary" (click)="capturePhoto()">Tirar Foto</button>
+            <button class="btn btn-outline-secondary" (click)="uploadPhoto()">Fazer Upload</button>
+          </div>
+
+          <div class="mt-3">
+            <p>Após enviar a imagem, realizaremos uma análise baseada em Machine Learning para mostrar como o sapato ficará em seu pé.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
