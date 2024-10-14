@@ -1,130 +1,13 @@
-<<<<<<< HEAD
-body {
-  background-color: #f5f5dc; /* Mantendo o background claro */
-  color: #2e4c2f; /* Texto primário */
-  font-family: 'Roboto', sans-serif; /* Fonte mais moderna e limpa */
-=======
 /* Estilos Globais */
 body {
   background-color: #f5f5dc;
   color: #2e4c2f;
   font-family: 'Arial', sans-serif;
->>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
   line-height: 1.6;
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-.section {
-  margin: 20px auto;
-  padding: 15px;
-  max-width: 1200px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar as seções */
-  background-color: white; /* Melhorando contraste nas seções */
-}
-
-.section-title {
-  font-size: 1.8em;
-  color: #2e4c2f;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.2s ease;
-}
-
-.btn-musgo {
-  background-color: #2e4c2f; /* Verde escuro */
-  color: white;
-  border: none;
-}
-
-.btn-musgo:hover {
-  background-color: #246236; /* Um tom mais claro no hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Efeito de elevação */
-}
-
-.btn-no-bg {
-  background-color: transparent;
-  color: #007bff; /* Azul padrão */
-  border: none;
-  font-weight: bold;
-}
-
-.btn-no-bg:hover {
-  color: #0056b3; /* Mais contraste no hover */
-  text-decoration: underline; /* Efeito visual de link no hover */
-}
-
-.btn[disabled] {
-  background-color: #cccccc; /* Cor desativada */
-  cursor: not-allowed;
-  color: #666666;
-}
-a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-@media (max-width: 768px) {
-  .section {
-    padding: 10px;
-  }
-
-  .btn {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .section-title {
-    font-size: 1.5em;
-  }
-}
-
-@media (max-width: 480px) {
-  .btn {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .section {
-    box-shadow: none;
-  }
-}
-.product-info, .product-description, .product-reviews {
-  margin-bottom: 20px; /* Espaço entre as seções */
-}
-
-.product-title {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.product-price {
-  font-size: 1.5em;
-  color: #2e4c2f;
-  margin-bottom: 15px;
-}
-
-.product-actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-=======
 /* Botão estilo musgo */
 .btn-musgo {
   background-color: #2e4c2f;
@@ -186,5 +69,4 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
->>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
 }

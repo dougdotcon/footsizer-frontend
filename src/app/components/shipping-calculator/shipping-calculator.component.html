@@ -1,12 +1,4 @@
 <div class="shipping-calculator">
-<<<<<<< HEAD
-  <form>
-    <div class="mb-3">
-      <label for="zipCode" class="form-label">Digite seu CEP:</label>
-      <input type="text" class="form-control" id="zipCode" placeholder="Ex.: 12345-678">
-    </div>
-    <button type="submit" class="btn btn-no-bg">Calcular Frete</button>
-=======
   <form (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="zipCode" class="form-label">Digite seu CEP:</label>
@@ -25,6 +17,5 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!zipCodeInput.valid">Calcular Frete</button>
->>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
   </form>
 </div>

@@ -3,12 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-shipping-calculator',
   templateUrl: './shipping-calculator.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./shipping-calculator.component.css']
-})
-export class ShippingCalculatorComponent {
-
-=======
   styleUrls: ['./shipping-calculator.component.css'],
 })
 export class ShippingCalculatorComponent {
@@ -21,5 +15,4 @@ export class ShippingCalculatorComponent {
       // Adicionar lógica de cálculo de frete
     }
   }
->>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
 }
