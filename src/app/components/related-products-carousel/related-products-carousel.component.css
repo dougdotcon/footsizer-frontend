@@ -1,0 +1,105 @@
+/* Estilo geral para o container do carousel */
+.related-products-carousel {
+  margin: 40px 0; /* Ajuste a margem superior e inferior */
+  padding: 20px 0;
+  background-color: #f9f9f9;
+}
+
+.related-products-carousel .carousel-item {
+  padding: 10px;
+  transition: transform 0.5s ease;
+}
+
+/* Estilo para os cards de produtos */
+.related-products-carousel .card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-products-carousel .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-products-carousel .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.related-products-carousel .card img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para o corpo dos cards */
+.related-products-carousel .card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.related-products-carousel .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e4c2f;
+  margin-bottom: 10px;
+}
+
+.related-products-carousel .card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.related-products-carousel .btn {
+  background-color: #2e4c2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.related-products-carousel .btn:hover {
+  background-color: #254226;
+}
+
+/* Estilo para os controles do carousel */
+.related-products-carousel .carousel-control-prev-icon,
+.related-products-carousel .carousel-control-next-icon {
+  filter: invert(100%);
+  width: 30px;
+  height: 30px;
+}
+
+/* Indicadores do carousel */
+.related-products-carousel .carousel-indicators button {
+  background-color: #2e4c2f;
+}
+
+.related-products-carousel .carousel-indicators .active {
+  background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .related-products-carousel .card-body {
+    padding: 10px;
+  }
+
+  .related-products-carousel .card-title {
+    font-size: 1rem;
+  }
+
+  .related-products-carousel .card-text {
+    font-size: 0.9rem;
+  }
+
+  .related-products-carousel .btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}

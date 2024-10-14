@@ -98,5 +98,11 @@
         }
       }
     }
+<<<<<<< HEAD
+=======
+  },
+  "cli": {
+    "analytics": "9062fea5-7bc9-49d6-a7c7-7151145d32d3"
+>>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
   }
 }

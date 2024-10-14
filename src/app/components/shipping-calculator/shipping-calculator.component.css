@@ -1,0 +1,94 @@
+/* Estilo geral para o container do cálculo de frete */
+.shipping-calculator {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  /* Estilo para o título */
+  .shipping-calculator h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e4c2f;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para o rótulo do campo de entrada */
+  .shipping-calculator label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  /* Estilo para o campo de entrada (CEP) */
+  .shipping-calculator input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .shipping-calculator input[type="text"]:focus {
+    border-color: #2e4c2f;
+    outline: none;
+  }
+  
+  /* Estilo para o botão de calcular frete */
+  .shipping-calculator .btn-calculate {
+    background-color: #2e4c2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shipping-calculator .btn-calculate:hover {
+    background-color: #254226;
+  }
+  
+  /* Mensagem de erro */
+  .shipping-calculator .error-message {
+    color: #e63946;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  /* Mensagem de sucesso */
+  .shipping-calculator .success-message {
+    color: #2e4c2f;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .shipping-calculator {
+      padding: 15px;
+    }
+  
+    .shipping-calculator h3 {
+      font-size: 1.5rem;
+    }
+  
+    .shipping-calculator input[type="text"] {
+      font-size: 0.9rem;
+    }
+  
+    .shipping-calculator .btn-calculate {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+  

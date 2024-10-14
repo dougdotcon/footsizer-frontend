@@ -1,0 +1,92 @@
+/* Estilo para o container de avaliações */
+.product-reviews {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .product-reviews h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e4c2f;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para as avaliações */
+  .review {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .review:last-child {
+    border-bottom: none;
+  }
+  
+  .review strong {
+    font-size: 1.1rem;
+    color: #2e4c2f;
+  }
+  
+  .review .rating {
+    color: #f1c40f; /* Cor das estrelas (dourado) */
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  .review p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  /* Botão de enviar comentário */
+  .submit-review {
+    background-color: #2e4c2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-review:hover {
+    background-color: #254226;
+  }
+  
+  /* Estilo para o textarea de comentário */
+  .product-reviews textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .product-reviews {
+      padding: 15px;
+    }
+  
+    .product-reviews h3 {
+      font-size: 1.5rem;
+    }
+  
+    .review strong {
+      font-size: 1rem;
+    }
+  
+    .review p {
+      font-size: 0.9rem;
+    }
+  
+    .submit-review {
+      padding: 8px 15px;
+    }
+  }
+  

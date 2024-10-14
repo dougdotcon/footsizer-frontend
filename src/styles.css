@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 body {
   background-color: #f5f5dc; /* Mantendo o background claro */
   color: #2e4c2f; /* Texto primário */
   font-family: 'Roboto', sans-serif; /* Fonte mais moderna e limpa */
+=======
+/* Estilos Globais */
+body {
+  background-color: #f5f5dc;
+  color: #2e4c2f;
+  font-family: 'Arial', sans-serif;
+>>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
   line-height: 1.6;
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
 .section {
   margin: 20px auto;
   padding: 15px;
@@ -115,4 +124,67 @@ a:hover {
   margin-top: 20px;
   display: flex;
   gap: 10px;
+=======
+/* Botão estilo musgo */
+.btn-musgo {
+  background-color: #2e4c2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-musgo:hover {
+  background-color: #254226; /* Cor mais escura ao passar o mouse */
+}
+
+/* Botão sem fundo */
+.btn-no-bg {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.btn-no-bg:hover {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+/* Classes utilitárias */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.p-3 {
+  padding: 1rem;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+>>>>>>> 78495cd (Primeiro commit do projeto Footsizer Frontend)
 }
